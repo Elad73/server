@@ -21,7 +21,8 @@ passport.deserializeUser( (id, done) => {
 passport.use(new GoogleStrategy ({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
-    callbackURL: '/auth/google/callback'
+    callbackURL: '/auth/google/callback',
+    proxy: true //this tells googleStrategy that it is ok to go through a proxy (as we are using manged service by heroku), so it can keep the https://
   }, (accessToken, refreshToken, profile, done) =>
    {
         User.findOne({ googleID: profile.id }) //this is not a synchronized action, mongoose returens a promise (then)
