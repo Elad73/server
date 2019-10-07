@@ -4,6 +4,18 @@ const keys = require('../config/keys');
 const mongoose = require('mongoose');
 
 const User = mongoose.model('users');
+
+passport.serializeUser((user, done ) => {
+    done(null, user.id); //this user.id is the id record in mongodb
+});
+
+passport.deserializeUser( (id, done) => {
+    User.findByIf(id)
+        .then(user => {
+          done(null, user);
+        });
+});
+
 //console.developers.google.com
 //clientID and clientSecert are at the keys.js file
 passport.use(new GoogleStrategy ({
