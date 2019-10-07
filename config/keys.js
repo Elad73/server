@@ -6,6 +6,3 @@ if (process.env.NODE_ENV === 'production') {
   //we are in development - return the dev keys!!!
   module.exports = require('./dev');
 }
-
-//prodUser, 0V7HvMgswc6OKUOj
-//mongodb+srv://prodUser:0V7HvMgswc6OKUOj@emaily-prod-otmcx.mongodb.net/anything?retryWrites=true&w=majority
