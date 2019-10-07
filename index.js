@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
+require('./models/User'); //the order here is important, use this require before require for passportService
 require('./services/passportService');
 
 mongoose.connect(keys.mongoURI);
