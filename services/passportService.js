@@ -23,20 +23,16 @@ passport.use(new GoogleStrategy ({
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback',
     proxy: true //this tells googleStrategy that it is ok to go through a proxy (as we are using manged service by heroku), so it can keep the https://
-  }, (accessToken, refreshToken, profile, done) =>
+  },
+  async (accessToken, refreshToken, profile, done) =>
    {
-        User.findOne({ googleID: profile.id }) //this is not a synchronized action, mongoose returens a promise (then)
-        .then((existingUser)=>{
-            if (existingUser) {
-                //we already have a record with the given profile ID
-                done(null, existingUser);
-            }else{
-                //we don't have a user record with this ID, make a new recored
-                new User({ googleID: profile.id })
-                .save() //save() - another synchronized action to the DB, have to add the .then statement
-                .then(user => done(null, user));
-
-            }
-        });
+        const existingUser = await User.findOne({ googleID: profile.id }); //this is not a synchronized action, mongoose returens a promise (then)
+        if(existingUser){
+            //we already have a record with the given profile ID
+            return done(null, existingUser);
+        }
+        //we don't have a user record with this ID, make a new recored
+        const user = await new User({ googleID: profile.id }).save(); //save() - another synchronized action to the DB, have to add the .then statement
+        done(null, user);
     })
 );

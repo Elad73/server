@@ -1,23 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
+import family from './images/family.png';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={family} className="App-logo" alt="logo" />
         <h2>Welcome to Ron's family</h2>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+        <a className="App-link" href="/auth/google" target="_blank" rel="noopener noreferrer">
+          Sign In With Google
         </a>
       </header>
     </div>
