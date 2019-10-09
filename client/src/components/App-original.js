@@ -1,9 +1,9 @@
 import React from 'react';
 //import logo from './logo.svg';
-import family from './images/family.png';
-import './App.css';
+import family from '../images/family.png';
+import '../App.css';
 
-function App() {
+const Landing = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -15,6 +15,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
-export default App;
+export default Landing;

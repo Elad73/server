@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -9,11 +10,11 @@ class Header extends Component {
               return;
           case false:
               return (
-                  <li><a href="/auth/google">Login to Google</a></li>
+                  <li><a href="/auth/google">Login With Google</a></li>
               );
           default:
           return (
-              <li><a href="/api/logout">Logout</a></li>
+              <li><a href="/api/logout">Logout</a></li>  //todo: consider making it an AJAX call
           );
         }
     };
@@ -23,7 +24,12 @@ class Header extends Component {
         return (
             <nav>
                 <div className="nav-wrapper">
-                    <a href="#logo" className="left brand-logo">Home</a>
+                    <Link
+                        to={this.props.auth ? '/dashboard' : '/'}
+                        className="left brand-logo"
+                    >
+                        Home
+                    </Link>
                     <ul id="nav-mobile" className="right">
                         {this.renderContent()}
                     </ul>
