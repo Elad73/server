@@ -1,14 +1,31 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Header extends Component {
+
+    renderContent(){
+        switch (this.props.auth) {
+          case null:
+              return;
+          case false:
+              return (
+                  <li><a href="/auth/google">Login to Google</a></li>
+              );
+          default:
+          return (
+              <li><a href="/api/logout">Logout</a></li>
+          );
+        }
+    };
+
     render(){
+        console.log(this.props);
         return (
             <nav>
-                <div class="nav-wrapper">
-                    <a href="" class="left brand-logo">Home</a>
-                    <ul id="nav-mobile" class="right">
-                        <li><a href="/auth/google">Login with Google</a></li>
-
+                <div className="nav-wrapper">
+                    <a href="#logo" className="left brand-logo">Home</a>
+                    <ul id="nav-mobile" className="right">
+                        {this.renderContent()}
                     </ul>
                 </div>
             </nav>
@@ -16,4 +33,9 @@ class Header extends Component {
     }
 }
 
-export default Header;
+
+function mapStateToProps(state){
+    return { auth: state.auth };
+}
+
+export default connect(mapStateToProps)(Header);
