@@ -10,11 +10,11 @@ const SurveyNew = () => <h2>SurveyNew</h2>;
 
 class App extends Component {
     componentDidMount() {
-        this.props.fetchUser();
-    }
+       this.props.fetchUser();
+     }
 
     render() {
-        return (
+      return (
           <div className="container">
               <BrowserRouter>
                   <div>
