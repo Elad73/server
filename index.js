@@ -3,6 +3,7 @@ const express = require('express'); //outof the box express doesn't come with co
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session'); //to gives us access to cookies
 const passport = require('passport'); //to make use of the cookies
+const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/User'); //the order here is important, use this require before require for passportService
 require('./services/passportService');
@@ -10,6 +11,9 @@ require('./services/passportService');
 mongoose.connect(keys.mongoURI);
 
 const app = express();
+
+//takes the requests and then assigns is to req.body property of the incoming request object
+app.use(bodyParser.json());
 
 //tell express to add cookies to the application
 app.use(
