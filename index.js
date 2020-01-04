@@ -12,6 +12,7 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
+//Middlewares
 //takes the requests and then assigns is to req.body property of the incoming request object
 app.use(bodyParser.json());
 
@@ -26,6 +27,7 @@ app.use(
 //tell the app through passport that we should add cookies to handle authentication
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
