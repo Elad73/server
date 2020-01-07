@@ -10,6 +10,6 @@ import reducers from './reducers';
 const store = createStore( reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
-  <Provider store={store}><App /></Provider>,
+  <Provider apiKey='pk_test_xojHZzyy0qEaT1rY4Z1GrfHJ00phCrt2Qf' store={store}><App /></Provider>,
   document.querySelector('#root')
 );

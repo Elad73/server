@@ -6,6 +6,7 @@ const passport = require('passport'); //to make use of the cookies
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/User'); //the order here is important, use this require before require for passportService
+require('./models/Survey'); 
 require('./services/passportService');
 
 mongoose.connect(keys.mongoURI);
