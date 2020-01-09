@@ -7,6 +7,7 @@ class Mailer extends helper.Mail {
         super();
 
         //sendgrid specific setup
+        this.sgApi = sendgrid(keys.sendGridKey);
         this.from_email = new helper.Email('no-reply@emaily.com');
         this.subject = subject;
         this.body = new helper.Content('text/html', content);
@@ -37,6 +38,17 @@ class Mailer extends helper.Mail {
             personalize.addTo(recipient);
         });
         this.addPersonalization(personalize);
+    }
+
+    async send() {
+        const request = this.sgApi.emptyRequest({
+            method: 'POST',
+            path: '/v3/mail/send',
+            body: this.toJSON()
+        });
+
+        const response = this.sgApi.API(request);
+        return response;
     }
 }
 
