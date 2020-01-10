@@ -33,5 +33,9 @@ module.exports = app => {
         } catch(err){
             res.status(422).send(err); //unprocessable entity
         }
-    });  
+    });
+    
+    app.get('/api/surveys/thanks', (req, res) => {
+        res.send('Thanks for voting!');
+    }); 
 };
