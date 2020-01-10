@@ -4,9 +4,11 @@ const Dashboard = () => {
   return (
       <div style={{ textAlign: 'center'}}>
           <h1>
-              The Dashboard!
+              The most stunning Dashboard EVER!
           </h1>
-          images, bank status, dreams track, goals track and much more...
+          Images, bank status, dreams track, goals track and much more...
+          <br></br>
+          This is a game changer that will change your'e life to levels you haven't met before.
       </div>
   );
 };
