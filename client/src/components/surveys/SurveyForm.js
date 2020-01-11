@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 import SurveyField from './SurveyField';
+import validateEmails from '../../utils/validateEmails';
 
 const FIELDS = [
     {label:'Survey Title', name: 'title'},
@@ -43,12 +44,14 @@ class SurveyForm extends Component {
 function validate(values) {
     const errors = {}; 
 
+    errors.emails = validateEmails(values.emails || ''); //if no emails have entered, then we will provide an empty string
+
     _.each(FIELDS, ({ name }) => {
         if(!values[name]) {
             errors[name] = 'You must provide a value';
         }
     });
-    
+
     return errors; //if the errors are emtpy than reduxForm understands that the validation has passed
 }
 
