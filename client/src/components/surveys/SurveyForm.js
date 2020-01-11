@@ -41,11 +41,14 @@ class SurveyForm extends Component {
 }
 
 function validate(values) {
-    const errors = {};
-        if(!values.title) {
-            errors.title = 'You must provide a title';
+    const errors = {}; 
+
+    _.each(FIELDS, ({ name }) => {
+        if(!values[name]) {
+            errors[name] = 'You must provide a value';
         }
-  
+    });
+    
     return errors; //if the errors are emtpy than reduxForm understands that the validation has passed
 }
 
