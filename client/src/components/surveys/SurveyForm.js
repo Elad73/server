@@ -40,6 +40,16 @@ class SurveyForm extends Component {
     }
 }
 
+function validate(values) {
+    const errors = {};
+        if(!values.title) {
+            errors.title = 'You must provide a title';
+        }
+  
+    return errors; //if the errors are emtpy than reduxForm says that the validation has passed
+}
+
 export default reduxForm({
+    validate, //that function is automatically activated whenever the user submit the form
     form: 'surveyForm' //this property is of reduxForm
 })(SurveyForm);
