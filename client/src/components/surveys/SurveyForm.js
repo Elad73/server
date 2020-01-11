@@ -46,7 +46,7 @@ function validate(values) {
             errors.title = 'You must provide a title';
         }
   
-    return errors; //if the errors are emtpy than reduxForm says that the validation has passed
+    return errors; //if the errors are emtpy than reduxForm understands that the validation has passed
 }
 
 export default reduxForm({
