@@ -15,13 +15,4 @@ async function fetchAlbums ( ) {
   console.log(json);
 }
 
-//tell the javascript interpreter that this funstion has some async code
-const fetchAlbums = async () => {
-  const res = await fetch('https://rallycoding.herokuapp.com/api/music_albums');
-  const json = await res.json();
-  console.log(json);
-}
-
-
-
 fetchAlbums();

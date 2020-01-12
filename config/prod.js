@@ -10,8 +10,6 @@ module.exports = {
   redirectDomain: process.REDIRECT_DOMAIN
 };
 
-\
-
 /*
 module.exports = {
   googleClientID: '787744254950-rmdtoj647ocidtku44aa8nbp4fq9p7at.apps.googleusercontent.com',
