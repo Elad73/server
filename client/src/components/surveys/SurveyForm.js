@@ -57,5 +57,6 @@ function validate(values) {
 
 export default reduxForm({
     validate, //that function is automatically activated whenever the user submit the form
-    form: 'surveyForm' //this property is of reduxForm
+    form: 'surveyForm', //this property is of reduxForm
+    destroyOnUnmount: false
 })(SurveyForm);
