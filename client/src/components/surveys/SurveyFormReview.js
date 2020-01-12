@@ -2,7 +2,6 @@
 import React from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
 import formFields from './formFields';
 import * as actions from '../../actions';
 
@@ -40,8 +39,8 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
                 className="green btn-flat right white-text"
 
             >
-                Send SurveyFormReview
-                <i className-="material-icons right">email</i>
+                Send Survey For Review
+                <i className="material-icons right">email</i>
             </button>
         </div>
     );
