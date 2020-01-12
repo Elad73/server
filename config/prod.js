@@ -10,7 +10,7 @@ module.exports = {
   redirectDomain: process.REDIRECT_DOMAIN
 };
 
-
+\
 
 /*
 module.exports = {
