@@ -34,6 +34,12 @@ module.exports = app => {
             res.status(422).send(err); //unprocessable entity
         }
     });
+
+    app.post('/api/surveys/webhooks', (req, res) => {
+        console.log(req.body);
+        res.send({});
+    });
+
     
     app.get('/api/surveys/thanks', (req, res) => {
         res.send('Thanks for voting!');
