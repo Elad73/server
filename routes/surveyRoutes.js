@@ -40,18 +40,19 @@ module.exports = app => {
 
     app.post('/api/surveys/webhooks', (req, res) => {
         const events = _.map(req.body, ({ url, email}) => {
-            const pathname = new URL(url).pathname;
-            const p = new Path('/api/surveys/:surveyId/:choice');
-            const match = p.test(pathname); //either will be an object (with a surveyId and a choice) or a null
-            if (match) {
-                return {
-                    email,
-                    surveyId: match.surveyId,
-                    choice: match.choice
-                };
-            }
-            console.log(events);
-        });        
+                const pathname = new URL(url).pathname;
+                const p = new Path('/api/surveys/:surveyId/:choice');
+                const match = p.test(pathname); //either will be an object (with a surveyId and a choice) or a null
+                if (match) {
+                    return { email, surveyId: match.surveyId, choice: match.choice };
+                }
+        }); 
+        const compactEvents = _.compact(events); //return only events objects, removing all of the undefined
+        const uniqueEvents = _.uniqBy(compactEvents, 'email', 'surveyId'); //if there are any duplicants at the email or at the surveyId fields, then remove them
+
+        console.log(uniqueEvents);
+        
+        res.send({});
     });
 
     
