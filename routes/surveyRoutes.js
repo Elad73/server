@@ -39,10 +39,18 @@ module.exports = app => {
     });
 
     app.post('/api/surveys/webhooks', (req, res) => {
-        const events = _.map(req.body, (event) => {
-            const pathName = new URL(event.url).pathname;
+        const events = _.map(req.body, ({ url, email}) => {
+            const pathname = new URL(url).pathname;
             const p = new Path('/api/surveys/:surveyId/:choice');
-            console.log(p.test(pathName));
+            const match = p.test(pathname); //either will be an object (with a surveyId and a choice) or a null
+            if (match) {
+                return {
+                    email,
+                    surveyId: match.surveyId,
+                    choice: match.choice
+                };
+            }
+            console.log(events);
         });        
     });
 
