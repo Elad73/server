@@ -67,13 +67,11 @@ module.exports = app => {
               })
             .value();
 
-        console.log(events);
-
         res.send({});
     });
 
     
-    app.get('/api/surveys/thanks', (req, res) => {
+    app.get('/api/surveys/:surveyId/:choice', (req, res) => {
         res.send('Thanks for voting!');
     }); 
 };
