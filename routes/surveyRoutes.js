@@ -50,6 +50,21 @@ module.exports = app => {
             }) 
             .compact() //return only events objects, removing all of the undefined
             .uniqBy('email', 'surveyId') //if there are any duplicants at the email or at the surveyId fields, then remove them
+            .each(({ surveyId, email, choice }) => {
+                Survey.updateOne(
+                  {
+                    _id: surveyId,
+                    recipients: {
+                      $elemMatch: { email: email, responded: false }
+                    }
+                  },
+                  {
+                    $inc: { [choice]: 1 },
+                    $set: { 'recipients.$.responded': true },
+                    lastResponded: new Date()
+                  }
+                ).exec();
+              })
             .value();
 
         console.log(events);
