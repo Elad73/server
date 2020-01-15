@@ -8,6 +8,7 @@ class Mailer extends helper.Mail {
 
         //sendgrid specific setup
         this.sgApi = sendgrid(keys.sendGridKey);
+        console.log("this.sgApi---------------------------------------------->" + this.sgApi);
         this.from_email = new helper.Email('no-reply@emaily.com');
         this.subject = subject;
         this.body = new helper.Content('text/html', content);
