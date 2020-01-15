@@ -14,9 +14,11 @@ export const handleToken = token => async dispatch => {
 };
 
 export const submitSurvey = (values, history) => async dispatch => {
+    console.log("values----------------------------------------------------->" + JSON.stringify(values));
     const res = await axios.post('/api/surveys', values);
-
+    console.log("res----------------------------------------------------->" + JSON.stringify(res));
     history.push('/dashboard'); //after the request has been over, redirect to the "dashboard" page.
+    
     dispatch( {type: FETCH_USER, payload: res.data });
 };
 

@@ -28,7 +28,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
                 Back
             </button>
             <button 
-                onClick={() => submitSurvey(formValues, history)}
+                onClick={() => submitSurvey(formValues, history)} //this is the action creator
                 className="green btn-flat right white-text"
 
             >
