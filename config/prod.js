@@ -10,11 +10,3 @@ module.exports = {
   redirectDomain: process.REDIRECT_DOMAIN
 };
 
-/*
-module.exports = {
-  googleClientID: '787744254950-rmdtoj647ocidtku44aa8nbp4fq9p7at.apps.googleusercontent.com',
-  googleClientSecret: 'l_Wu5C0GTr65MaDuvBZaWla_',
-  mongoURI: 'mongodb+srv://prodUser:0V7HvMgswc6OKUOj@emaily-prod-otmcx.mongodb.net/anything?retryWrites=true&w=majority',
-  cookieKey: '9sdfgkj90iFDFwgR#$^BSDFG++sdfg!'
-};
-*/
