@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER } from './types';
+import { FETCH_USER, FETCH_SURVEYS } from './types';
 
 //disptach an action after a success call to current_user
 export const  fetchUser = () => async (dispatch) => {
@@ -18,4 +18,10 @@ export const submitSurvey = (values, history) => async dispatch => {
 
     history.push('/dashboard'); //after the request has been over, redirect to the "dashboard" page.
     dispatch( {type: FETCH_USER, payload: res.data });
+};
+
+export const fetchSurveys = () => async dispatch => {
+    const res = await axios.get('/api/surveys');
+
+    dispatch({ type: FETCH_SURVEYS, payload: res.data});
 };
