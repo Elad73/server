@@ -92,7 +92,7 @@ const requireLogin = require('../middlewares/requireLogin');
   });
   
   app.get('/api/surveys/:surveyId/:choice', (req, res) => {
-    console.log("inside  ===============================================> " + JSON.stringify(events));
+    console.log("inside /api/surveys/:surveyId/:choice  ===============================================> " + JSON.stringify(req));
     res.send('Thanks for voting!');
   }); 
 };
