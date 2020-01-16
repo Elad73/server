@@ -49,7 +49,18 @@ const requireLogin = require('../middlewares/requireLogin');
   app.post('/api/surveys/webhooks', (req, res) => {
     console.log("inside the webhook===============================================> ");
     const p = new Path('/api/surveys/:surveyId/:choice');
-    console.log("p ===============================================> " + JSON.stringify(p));
+    console.log("req.body ===============================================> " + JSON.stringify(req.body));
+    console.log("*********************************************** ISOLATING THE PROBLEM ******************************************");
+    const eventsToMatch = _.chain(req.body)
+        .map(({ url, email}) => {
+                const match = p.test(new URL(url).pathname); //either will be an object (with a surveyId and a choice) or a null
+                if (match) {
+                    return { email, surveyId: match.surveyId, choice: match.choice };
+                }
+        }).compact().uniqBy('email', 'surveyId');
+    
+    console.log("eventsToMatch ===============================================> " + JSON.stringify(eventsToMatch));
+    console.log("*********************************************** ISOLATING THE PROBLEM ******************************************");
     const events = _.chain(req.body)
         .map(({ url, email}) => {
                 const match = p.test(new URL(url).pathname); //either will be an object (with a surveyId and a choice) or a null
