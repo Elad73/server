@@ -6,6 +6,7 @@ class Mailer extends helper.Mail {
     constructor({ subject, recipients }, content) {
         super();
 
+        console.log("keys.sendGridKey before adding it to densgrid function ---------------------------------------------->" + JSON.stringify(keys.sendGridKey));
         //sendgrid specific setup
         this.sgApi = sendgrid(keys.sendGridKey);
         console.log("this.sgApi---------------------------------------------->" + JSON.stringify(this.sgApi));
