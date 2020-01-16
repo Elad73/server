@@ -76,10 +76,12 @@ const requireLogin = require('../middlewares/requireLogin');
           })
         .value();
 
+        console.log("events after building the object to save ===============================================> " + JSON.stringify(events));
     res.send({});
   });
   
   app.get('/api/surveys/:surveyId/:choice', (req, res) => {
+    console.log("inside  ===============================================> " + JSON.stringify(events));
     res.send('Thanks for voting!');
   }); 
 };
