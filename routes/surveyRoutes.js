@@ -47,8 +47,9 @@ const requireLogin = require('../middlewares/requireLogin');
   });
 
   app.post('/api/surveys/webhooks', (req, res) => {
+    console.log("inside the webhook===============================================> ");
     const p = new Path('/api/surveys/:surveyId/:choice');
-
+    console.log("p ===============================================> " + JSON.stringify(p));
     const events = _.chain(req.body)
         .map(({ url, email}) => {
                 const match = p.test(new URL(url).pathname); //either will be an object (with a surveyId and a choice) or a null
